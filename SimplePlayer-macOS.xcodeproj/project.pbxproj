@@ -1,0 +1,420 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		3226C6A02C00E25000A566B0 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 3226C69E2C00E25000A566B0 /* README.md */; };
+		3226C6A12C00E25000A566B0 /* LICENSE.txt in Resources */ = {isa = PBXBuildFile; fileRef = 3226C69F2C00E25000A566B0 /* LICENSE.txt */; };
+		323CE6AF2BFE552F00C81D5D /* SFBDummyClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 323CE6AE2BFE552F00C81D5D /* SFBDummyClass.m */; };
+		32919FBF2BFAEE5C00A3E43A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32919FBE2BFAEE5C00A3E43A /* AppDelegate.swift */; };
+		32919FC12BFAEE5E00A3E43A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 32919FC02BFAEE5E00A3E43A /* Assets.xcassets */; };
+		32919FC42BFAEE5E00A3E43A /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 32919FC32BFAEE5E00A3E43A /* Base */; };
+		32919FCD2BFAEF8000A3E43A /* CAAudioHardware in Frameworks */ = {isa = PBXBuildFile; productRef = 32919FCC2BFAEF8000A3E43A /* CAAudioHardware */; };
+		32919FD02BFAEF8900A3E43A /* SFBAudioEngine in Frameworks */ = {isa = PBXBuildFile; productRef = 32919FCF2BFAEF8900A3E43A /* SFBAudioEngine */; };
+		32919FD22BFAEFA200A3E43A /* PlayerWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32919FD12BFAEFA200A3E43A /* PlayerWindowController.swift */; };
+		32919FD52BFAEFD900A3E43A /* PlayerWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 32919FD32BFAEFD900A3E43A /* PlayerWindow.xib */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		3226C69E2C00E25000A566B0 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		3226C69F2C00E25000A566B0 /* LICENSE.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE.txt; sourceTree = "<group>"; };
+		323CE6AD2BFE552F00C81D5D /* SFBDummyClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFBDummyClass.h; sourceTree = "<group>"; };
+		323CE6AE2BFE552F00C81D5D /* SFBDummyClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFBDummyClass.m; sourceTree = "<group>"; };
+		32919FBB2BFAEE5C00A3E43A /* SimplePlayer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SimplePlayer.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		32919FBE2BFAEE5C00A3E43A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		32919FC02BFAEE5E00A3E43A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		32919FC32BFAEE5E00A3E43A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		32919FD12BFAEFA200A3E43A /* PlayerWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerWindowController.swift; sourceTree = "<group>"; };
+		32919FD42BFAEFD900A3E43A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/PlayerWindow.xib; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		32919FB82BFAEE5C00A3E43A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				32919FCD2BFAEF8000A3E43A /* CAAudioHardware in Frameworks */,
+				32919FD02BFAEF8900A3E43A /* SFBAudioEngine in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		32919FB22BFAEE5C00A3E43A = {
+			isa = PBXGroup;
+			children = (
+				3226C69E2C00E25000A566B0 /* README.md */,
+				3226C69F2C00E25000A566B0 /* LICENSE.txt */,
+				32919FBD2BFAEE5C00A3E43A /* SimplePlayer */,
+				32919FBC2BFAEE5C00A3E43A /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		32919FBC2BFAEE5C00A3E43A /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				32919FBB2BFAEE5C00A3E43A /* SimplePlayer.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		32919FBD2BFAEE5C00A3E43A /* SimplePlayer */ = {
+			isa = PBXGroup;
+			children = (
+				32919FBE2BFAEE5C00A3E43A /* AppDelegate.swift */,
+				32919FD12BFAEFA200A3E43A /* PlayerWindowController.swift */,
+				323CE6AD2BFE552F00C81D5D /* SFBDummyClass.h */,
+				323CE6AE2BFE552F00C81D5D /* SFBDummyClass.m */,
+				32919FC02BFAEE5E00A3E43A /* Assets.xcassets */,
+				32919FC22BFAEE5E00A3E43A /* MainMenu.xib */,
+				32919FD32BFAEFD900A3E43A /* PlayerWindow.xib */,
+			);
+			path = SimplePlayer;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		32919FBA2BFAEE5C00A3E43A /* SimplePlayer */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 32919FC82BFAEE5E00A3E43A /* Build configuration list for PBXNativeTarget "SimplePlayer" */;
+			buildPhases = (
+				32919FB72BFAEE5C00A3E43A /* Sources */,
+				32919FB82BFAEE5C00A3E43A /* Frameworks */,
+				32919FB92BFAEE5C00A3E43A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SimplePlayer;
+			packageProductDependencies = (
+				32919FCC2BFAEF8000A3E43A /* CAAudioHardware */,
+				32919FCF2BFAEF8900A3E43A /* SFBAudioEngine */,
+			);
+			productName = "SimplePlayer-macOS";
+			productReference = 32919FBB2BFAEE5C00A3E43A /* SimplePlayer.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		32919FB32BFAEE5C00A3E43A /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1540;
+				LastUpgradeCheck = 1540;
+				TargetAttributes = {
+					32919FBA2BFAEE5C00A3E43A = {
+						CreatedOnToolsVersion = 15.4;
+						LastSwiftMigration = 1540;
+					};
+				};
+			};
+			buildConfigurationList = 32919FB62BFAEE5C00A3E43A /* Build configuration list for PBXProject "SimplePlayer-macOS" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 32919FB22BFAEE5C00A3E43A;
+			packageReferences = (
+				32919FCB2BFAEF8000A3E43A /* XCRemoteSwiftPackageReference "CAAudioHardware" */,
+				3226C69B2C00E15A00A566B0 /* XCRemoteSwiftPackageReference "SFBAudioEngine" */,
+			);
+			productRefGroup = 32919FBC2BFAEE5C00A3E43A /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				32919FBA2BFAEE5C00A3E43A /* SimplePlayer */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		32919FB92BFAEE5C00A3E43A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				32919FC12BFAEE5E00A3E43A /* Assets.xcassets in Resources */,
+				32919FC42BFAEE5E00A3E43A /* Base in Resources */,
+				3226C6A02C00E25000A566B0 /* README.md in Resources */,
+				3226C6A12C00E25000A566B0 /* LICENSE.txt in Resources */,
+				32919FD52BFAEFD900A3E43A /* PlayerWindow.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		32919FB72BFAEE5C00A3E43A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				32919FD22BFAEFA200A3E43A /* PlayerWindowController.swift in Sources */,
+				323CE6AF2BFE552F00C81D5D /* SFBDummyClass.m in Sources */,
+				32919FBF2BFAEE5C00A3E43A /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		32919FC22BFAEE5E00A3E43A /* MainMenu.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				32919FC32BFAEE5E00A3E43A /* Base */,
+			);
+			name = MainMenu.xib;
+			sourceTree = "<group>";
+		};
+		32919FD32BFAEFD900A3E43A /* PlayerWindow.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				32919FD42BFAEFD900A3E43A /* Base */,
+			);
+			name = PlayerWindow.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		32919FC62BFAEE5E00A3E43A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		32919FC72BFAEE5E00A3E43A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = macosx;
+				SWIFT_COMPILATION_MODE = wholemodule;
+			};
+			name = Release;
+		};
+		32919FC92BFAEE5E00A3E43A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_STYLE = Manual;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = "";
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.music";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright © 2009-2024 Stephen F. Booth";
+				INFOPLIST_KEY_NSMainNibFile = MainMenu;
+				INFOPLIST_KEY_NSPrincipalClass = NSApplication;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = org.sbooth.AudioEngine.SimplePlayer.macOS;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		32919FCA2BFAEE5E00A3E43A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_STYLE = Manual;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = "";
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.music";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright © 2009-2024 Stephen F. Booth";
+				INFOPLIST_KEY_NSMainNibFile = MainMenu;
+				INFOPLIST_KEY_NSPrincipalClass = NSApplication;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = org.sbooth.AudioEngine.SimplePlayer.macOS;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		32919FB62BFAEE5C00A3E43A /* Build configuration list for PBXProject "SimplePlayer-macOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				32919FC62BFAEE5E00A3E43A /* Debug */,
+				32919FC72BFAEE5E00A3E43A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		32919FC82BFAEE5E00A3E43A /* Build configuration list for PBXNativeTarget "SimplePlayer" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				32919FC92BFAEE5E00A3E43A /* Debug */,
+				32919FCA2BFAEE5E00A3E43A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		3226C69B2C00E15A00A566B0 /* XCRemoteSwiftPackageReference "SFBAudioEngine" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/sbooth/SFBAudioEngine";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.1.0;
+			};
+		};
+		32919FCB2BFAEF8000A3E43A /* XCRemoteSwiftPackageReference "CAAudioHardware" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/sbooth/CAAudioHardware";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.4.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		32919FCC2BFAEF8000A3E43A /* CAAudioHardware */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 32919FCB2BFAEF8000A3E43A /* XCRemoteSwiftPackageReference "CAAudioHardware" */;
+			productName = CAAudioHardware;
+		};
+		32919FCF2BFAEF8900A3E43A /* SFBAudioEngine */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = SFBAudioEngine;
+		};
+/* End XCSwiftPackageProductDependency section */
+	};
+	rootObject = 32919FB32BFAEE5C00A3E43A /* Project object */;
+}
