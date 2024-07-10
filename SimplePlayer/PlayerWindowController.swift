@@ -418,15 +418,15 @@ class PlayerWindowController: NSWindowController {
 
 		do {
 			let currentOutputDeviceID = player.outputDeviceID
-			let outputDevices = try AudioDevice.devices().filter({ try $0.supportsOutput() })
+			let outputDevices = try AudioDevice.devices.filter({ try $0.supportsOutput })
 			for outputDevice in outputDevices {
 				// AVAudioEngine creates private aggregate devices, ignore them
-				if let isPrivateAggregate = try (outputDevice as? AudioAggregateDevice)?.isPrivate(), isPrivateAggregate {
+				if let isPrivateAggregate = try (outputDevice as? AudioAggregateDevice)?.isPrivate, isPrivateAggregate {
 					continue
 				}
 
 				let isActiveDevice = outputDevice.objectID == currentOutputDeviceID
-				let deviceMenuItem = NSMenuItem(title: try outputDevice.name(), action: #selector(PlayerWindowController.selectDevice(_:)), keyEquivalent: "")
+				let deviceMenuItem = NSMenuItem(title: try outputDevice.name, action: #selector(PlayerWindowController.selectDevice(_:)), keyEquivalent: "")
 				deviceMenuItem.target = self
 				deviceMenuItem.representedObject = outputDevice
 				deviceMenuItem.state = isActiveDevice ? NSControl.StateValue.on : NSControl.StateValue.off
