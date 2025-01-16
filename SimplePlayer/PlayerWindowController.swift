@@ -390,6 +390,7 @@ class PlayerWindowController: NSWindowController {
 		// Disable the playback controls
 		playButton.state = .off
 		playButton.isEnabled = false
+		playButton.title = "Stopped"
 
 		slider.isEnabled = false
 		backwardButton.isEnabled = false
