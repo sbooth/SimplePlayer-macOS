@@ -142,17 +142,6 @@ class PlayerWindowController: NSWindowController {
 		timer.schedule(deadline: DispatchTime.now(), repeating: .milliseconds(200), leeway: .milliseconds(100))
 
 		timer.setEventHandler {
-			switch self.player.playbackState {
-			case .playing:
-				self.playButton.title = "Pause"
-			case .paused:
-				self.playButton.title = "Resume"
-			case .stopped:
-				self.playButton.title = "Stopped"
-			@unknown default:
-				fatalError()
-			}
-
 			if let time = self.player.time {
 				if let progress = time.progress {
 					self.slider.doubleValue = progress
@@ -591,11 +580,18 @@ extension PlayerWindowController: AudioPlayer.Delegate {
 		}
 	}
 
-#if DEBUG
 	func audioPlayer(_ audioPlayer: AudioPlayer, playbackStateChanged playbackState: AudioPlayer.PlaybackState) {
-		os_log(.debug, "Playback state changed to %{public}@", playbackState.debugDescription)
+		switch playbackState {
+		case .playing:
+			playButton.title = "Pause"
+		case .paused:
+			playButton.title = "Resume"
+		case.stopped:
+			playButton.title = "Stopped"
+		@unknown default:
+			fatalError("Unknown AudioPlayer.PlaybackState")
+		}
 	}
-#endif
 
 #if ENABLE_EQUALIZER
 	func audioPlayer(_ audioPlayer: AudioPlayer, reconfigureProcessingGraph engine: AVAudioEngine, with format: AVAudioFormat) -> AVAudioNode {
