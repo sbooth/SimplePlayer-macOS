@@ -1,10 +1,13 @@
 //
-// Copyright (c) 2009-2024 Stephen F. Booth <me@sbooth.org>
+// Copyright (c) 2009-2025 Stephen F. Booth <me@sbooth.org>
 // Part of https://github.com/sbooth/SimplePlayer-macOS
 // MIT license
 //
 
+import os.log
+
 import AppKit
+
 import CAAudioHardware
 import SFBAudioEngine
 
@@ -83,6 +86,10 @@ class PlayerWindowController: NSWindowController {
 
 	/// The audio player instance
 	let player = AudioPlayer()
+#if ENABLE_EQUALIZER
+	/// The equalizer
+	var equalizer: AVAudioUnitEQ! = nil
+#endif
 	/// Dispatch source for periodic UI updates
 	private var timer: DispatchSourceTimer!
 	/// The list of items managed by this object
@@ -94,6 +101,31 @@ class PlayerWindowController: NSWindowController {
 
 	override func windowDidLoad() {
 		player.delegate = self
+
+#if ENABLE_EQUALIZER
+		// Insert an equalizer between the player and main mixer nodes
+		equalizer = AVAudioUnitEQ()
+		equalizer.globalGain = -6
+		equalizer.bypass = false
+
+		player.withEngine { engine in
+			guard let mainMixerInputConnectionPoint = engine.inputConnectionPoint(for: engine.mainMixerNode, inputBus: 0) else {
+				os_log(.fault, "AVAudioEngine missing main mixer node input connection point for bus 0")
+				return
+			}
+			guard let mainMixerInputNode = mainMixerInputConnectionPoint.node else {
+				os_log(.fault, "AVAudioEngine missing input node to main mixer node")
+				return
+			}
+
+			engine.attach(self.equalizer)
+			engine.disconnectNodeInput(engine.mainMixerNode)
+			engine.connect(self.equalizer, to: engine.mainMixerNode, format: nil)
+			engine.connect(mainMixerInputNode, to: self.equalizer, format: nil)
+		}
+
+		player.logProcessingGraphDescription(.default, type: .debug)
+#endif
 
 		try? AudioSystemObject.instance.whenSelectorChanges(.devices, on: .main) { _ in
 			self.updateDeviceMenu()
@@ -110,17 +142,6 @@ class PlayerWindowController: NSWindowController {
 		timer.schedule(deadline: DispatchTime.now(), repeating: .milliseconds(200), leeway: .milliseconds(100))
 
 		timer.setEventHandler {
-			switch self.player.playbackState {
-			case .playing:
-				self.playButton.title = "Pause"
-			case .paused:
-				self.playButton.title = "Resume"
-			case .stopped:
-				self.playButton.title = "Stopped"
-			@unknown default:
-				fatalError()
-			}
-
 			if let time = self.player.time {
 				if let progress = time.progress {
 					self.slider.doubleValue = progress
@@ -342,8 +363,8 @@ class PlayerWindowController: NSWindowController {
 
 	// MARK: - UI
 
-	private func updateForNowPlayingChange() {
-		guard let nowPlaying = player.nowPlaying else {
+	private func updateNowPlaying(to nowPlaying: PCMDecoding?) {
+		guard let nowPlaying else {
 			disableUI()
 			return
 		}
@@ -369,6 +390,7 @@ class PlayerWindowController: NSWindowController {
 		// Disable the playback controls
 		playButton.state = .off
 		playButton.isEnabled = false
+		playButton.title = "Stopped"
 
 		slider.isEnabled = false
 		backwardButton.isEnabled = false
@@ -525,7 +547,7 @@ extension PlayerWindowController: NSWindowDelegate {
 	func windowWillClose(_ notification: Notification) {
 		player.stop()
 
-		if let uid = try? getAudioObjectProperty(PropertyAddress(kAudioDevicePropertyDeviceUID), from: player.outputDeviceID, type: CFString.self) as String {
+		if let uid = try? AudioObject.getPropertyData(objectID: player.outputDeviceID, property: PropertyAddress(kAudioDevicePropertyDeviceUID), type: CFString.self) as String {
 			UserDefaults.standard.set(uid, forKey: "deviceUID")
 		}
 
@@ -553,15 +575,37 @@ extension PlayerWindowController: AudioPlayer.Delegate {
 		}
 	}
 
-	func audioPlayerNowPlayingChanged(_ audioPlayer: AudioPlayer) {
+	func audioPlayer(_ audioPlayer: AudioPlayer, nowPlayingChanged nowPlaying: PCMDecoding?) {
 		DispatchQueue.main.async {
-			self.updateForNowPlayingChange()
+			self.updateNowPlaying(to: nowPlaying)
 		}
 	}
+
+	func audioPlayer(_ audioPlayer: AudioPlayer, playbackStateChanged playbackState: AudioPlayer.PlaybackState) {
+		switch playbackState {
+		case .playing:
+			playButton.title = "Pause"
+		case .paused:
+			playButton.title = "Resume"
+		case.stopped:
+			playButton.title = "Stopped"
+		@unknown default:
+			fatalError("Unknown AudioPlayer.PlaybackState")
+		}
+	}
+
+#if ENABLE_EQUALIZER
+	func audioPlayer(_ audioPlayer: AudioPlayer, reconfigureProcessingGraph engine: AVAudioEngine, with format: AVAudioFormat) -> AVAudioNode {
+		engine.disconnectNodeOutput(equalizer)
+		engine.connect(equalizer, to: engine.mainMixerNode, format: format)
+		return equalizer
+	}
+#endif
 
 	func audioPlayer(_ audioPlayer: AudioPlayer, encounteredError error: Error) {
 		audioPlayer.stop()
 		DispatchQueue.main.async {
+			self.disableUI()
 			NSApp.presentError(error)
 		}
 	}
