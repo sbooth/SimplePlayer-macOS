@@ -582,15 +582,17 @@ extension PlayerWindowController: AudioPlayer.Delegate {
 	}
 
 	func audioPlayer(_ audioPlayer: AudioPlayer, playbackStateChanged playbackState: AudioPlayer.PlaybackState) {
-		switch playbackState {
-		case .playing:
-			playButton.title = "Pause"
-		case .paused:
-			playButton.title = "Resume"
-		case.stopped:
-			playButton.title = "Stopped"
-		@unknown default:
-			fatalError("Unknown AudioPlayer.PlaybackState")
+		DispatchQueue.main.async {
+			switch playbackState {
+			case .playing:
+				self.playButton.title = "Pause"
+			case .paused:
+				self.playButton.title = "Resume"
+			case.stopped:
+				self.playButton.title = "Stopped"
+			@unknown default:
+				fatalError("Unknown AudioPlayer.PlaybackState")
+			}
 		}
 	}
 
