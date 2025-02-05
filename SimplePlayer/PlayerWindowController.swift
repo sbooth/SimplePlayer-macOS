@@ -575,7 +575,7 @@ extension PlayerWindowController: AudioPlayer.Delegate {
 		}
 	}
 
-	func audioPlayer(_ audioPlayer: AudioPlayer, nowPlayingChanged nowPlaying: PCMDecoding?) {
+	func audioPlayer(_ audioPlayer: AudioPlayer, nowPlayingChanged nowPlaying: PCMDecoding?, previouslyPlaying: PCMDecoding?) {
 		DispatchQueue.main.async {
 			self.updateNowPlaying(to: nowPlaying)
 		}
