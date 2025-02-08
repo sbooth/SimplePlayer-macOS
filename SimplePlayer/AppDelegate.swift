@@ -1,5 +1,5 @@
 //
-// Copyright (c) 2009-2024 Stephen F. Booth <me@sbooth.org>
+// Copyright (c) 2009-2025 Stephen F. Booth <me@sbooth.org>
 // Part of https://github.com/sbooth/SimplePlayer-macOS
 // MIT license
 //
@@ -20,7 +20,7 @@ class AppDelegate: NSObject {
 		openPanel.canChooseDirectories = false
 		openPanel.allowedFileTypes = PlayerWindowController.supportedPathExtensions
 
-		if(openPanel.runModal() == .OK) {
+		if openPanel.runModal() == .OK {
 			if let url = openPanel.urls.first {
 				playerWindowController.play(url: url)
 			}
@@ -34,7 +34,7 @@ class AppDelegate: NSObject {
 		openPanel.canChooseDirectories = false
 		openPanel.allowedFileTypes = PlayerWindowController.supportedPathExtensions
 
-		if(openPanel.runModal() == .OK) {
+		if openPanel.runModal() == .OK {
 			playerWindowController.addToPlaylist(urls: openPanel.urls)
 		}
 	}
