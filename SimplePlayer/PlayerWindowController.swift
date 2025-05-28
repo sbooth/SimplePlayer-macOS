@@ -127,11 +127,11 @@ class PlayerWindowController: NSWindowController {
 		player.logProcessingGraphDescription(.default, type: .debug)
 #endif
 
-		try? AudioSystemObject.instance.whenSelectorChanges(.devices, on: .main) { _ in
+		try? AudioSystem.instance.whenSelectorChanges(.devices, on: .main) { _ in
 			self.updateDeviceMenu()
 		}
 
-		if let uid = UserDefaults.standard.object(forKey: "deviceUID") as? String, let deviceID = try? AudioSystemObject.instance.deviceID(forUID: uid) {
+		if let uid = UserDefaults.standard.object(forKey: "deviceUID") as? String, let deviceID = try? AudioSystem.instance.deviceID(forUID: uid) {
 			try? player.setOutputDeviceID(deviceID)
 		}
 
