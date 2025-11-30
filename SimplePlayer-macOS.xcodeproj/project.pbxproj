@@ -109,7 +109,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1540;
-				LastUpgradeCheck = 1620;
+				LastUpgradeCheck = 2610;
 				TargetAttributes = {
 					32919FBA2BFAEE5C00A3E43A = {
 						CreatedOnToolsVersion = 15.4;
@@ -245,6 +245,7 @@
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = macosx;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
@@ -301,6 +302,7 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = macosx;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SWIFT_COMPILATION_MODE = wholemodule;
 			};
 			name = Release;
@@ -393,7 +395,7 @@
 			repositoryURL = "https://github.com/sbooth/SFBAudioEngine";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 0.7.0;
+				minimumVersion = 0.8.0;
 			};
 		};
 		32919FCB2BFAEF8000A3E43A /* XCRemoteSwiftPackageReference "CAAudioHardware" */ = {
@@ -401,7 +403,7 @@
 			repositoryURL = "https://github.com/sbooth/CAAudioHardware";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 0.7.0;
+				minimumVersion = 0.7.1;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
