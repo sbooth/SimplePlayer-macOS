@@ -108,21 +108,20 @@ class PlayerWindowController: NSWindowController {
 		equalizer.globalGain = -6
 		equalizer.bypass = false
 
-		player.withEngine { engine in
-			guard let mainMixerInputConnectionPoint = engine.inputConnectionPoint(for: engine.mainMixerNode, inputBus: 0) else {
-				os_log(.fault, "AVAudioEngine missing main mixer node input connection point for bus 0")
-				return
-			}
-			guard let mainMixerInputNode = mainMixerInputConnectionPoint.node else {
-				os_log(.fault, "AVAudioEngine missing input node to main mixer node")
-				return
-			}
-
-			engine.attach(self.equalizer)
-			engine.disconnectNodeInput(engine.mainMixerNode)
-			engine.connect(self.equalizer, to: engine.mainMixerNode, format: nil)
-			engine.connect(mainMixerInputNode, to: self.equalizer, format: nil)
+		let engine = player.audioEngine
+		guard let mainMixerInputConnectionPoint = engine.inputConnectionPoint(for: engine.mainMixerNode, inputBus: 0) else {
+			os_log(.fault, "AVAudioEngine missing main mixer node input connection point for bus 0")
+			return
 		}
+		guard let mainMixerInputNode = mainMixerInputConnectionPoint.node else {
+			os_log(.fault, "AVAudioEngine missing input node to main mixer node")
+			return
+		}
+
+		engine.attach(self.equalizer)
+		engine.disconnectNodeInput(engine.mainMixerNode)
+		engine.connect(self.equalizer, to: engine.mainMixerNode, format: nil)
+		engine.connect(mainMixerInputNode, to: self.equalizer, format: nil)
 
 		player.logProcessingGraphDescription(.default, type: .debug)
 #endif
