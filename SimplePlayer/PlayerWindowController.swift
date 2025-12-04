@@ -472,8 +472,7 @@ class PlayerWindowController: NSWindowController {
 			if let decoder = try item.decoder() {
 				if wasPlaying {
 					try player.play(decoder)
-				}
-				else {
+				} else {
 					try player.enqueue(decoder, immediate: true)
 				}
 			}
