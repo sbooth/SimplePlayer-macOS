@@ -605,8 +605,11 @@ extension PlayerWindowController: AudioPlayer.Delegate {
 
 	func audioPlayer(_ audioPlayer: AudioPlayer, decodingAborted decoder: PCMDecoding, error: Error, framesRendered: AVAudioFramePosition) {
 		DispatchQueue.main.async {
-//			NSApp.presentError(error)
-			NSApp.presentError(error, modalFor: self.window!, delegate: nil, didPresent: nil, contextInfo: nil)
+            guard let window = self.window else {
+                NSApp.presentError(error)
+                return
+            }
+			NSApp.presentError(error, modalFor: window, delegate: nil, didPresent: nil, contextInfo: nil)
 		}
 	}
 
@@ -614,7 +617,11 @@ extension PlayerWindowController: AudioPlayer.Delegate {
 		audioPlayer.stop()
 		DispatchQueue.main.async {
 			self.disableUI()
-			NSApp.presentError(error, modalFor: self.window!, delegate: nil, didPresent: nil, contextInfo: nil)
+            guard let window = self.window else {
+                NSApp.presentError(error)
+                return
+            }
+            NSApp.presentError(error, modalFor: window, delegate: nil, didPresent: nil, contextInfo: nil)
 		}
 	}
 }
