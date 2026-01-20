@@ -394,15 +394,15 @@
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/sbooth/SFBAudioEngine";
 			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 0.10.0;
+				kind = upToNextMinorVersion;
+				minimumVersion = 0.11.0;
 			};
 		};
 		32919FCB2BFAEF8000A3E43A /* XCRemoteSwiftPackageReference "CAAudioHardware" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/sbooth/CAAudioHardware";
 			requirement = {
-				kind = upToNextMajorVersion;
+				kind = upToNextMinorVersion;
 				minimumVersion = 0.7.1;
 			};
 		};
