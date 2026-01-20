@@ -1,5 +1,5 @@
 //
-// Copyright (c) 2009-2025 Stephen F. Booth <me@sbooth.org>
+// Copyright (c) 2009-2026 Stephen F. Booth <me@sbooth.org>
 // Part of https://github.com/sbooth/SimplePlayer-macOS
 // MIT license
 //
@@ -603,11 +603,18 @@ extension PlayerWindowController: AudioPlayer.Delegate {
 	}
 #endif
 
+	func audioPlayer(_ audioPlayer: AudioPlayer, decodingAborted decoder: PCMDecoding, error: Error, framesRendered: AVAudioFramePosition) {
+		DispatchQueue.main.async {
+//			NSApp.presentError(error)
+			NSApp.presentError(error, modalFor: self.window!, delegate: nil, didPresent: nil, contextInfo: nil)
+		}
+	}
+
 	func audioPlayer(_ audioPlayer: AudioPlayer, encounteredError error: Error) {
 		audioPlayer.stop()
 		DispatchQueue.main.async {
 			self.disableUI()
-			NSApp.presentError(error)
+			NSApp.presentError(error, modalFor: self.window!, delegate: nil, didPresent: nil, contextInfo: nil)
 		}
 	}
 }
