@@ -48,8 +48,13 @@ class AppDelegate: NSObject {
 
         if openPanel.runModal() == .OK {
             do {
-                let rg = try ReplayGainAnalyzer.analyzeAlbum(openPanel.urls)
-                os_log("Album gain %.2f dB, peak %.6f; Tracks: [%{public}@]", rg.replayGain.gain, rg.replayGain.peak, rg.trackReplayGain.map({ (url, replayGain) in String(format: "\"%@\" gain %.2f dB, peak %.6f", FileManager.default.displayName(atPath: url.lastPathComponent), replayGain.gain, replayGain.peak) }).joined(separator: ", "))
+                let urls = openPanel.urls
+                let start = DispatchTime.now()
+                let rg = try ReplayGainAnalyzer.analyzeAlbum(urls)
+                let end = DispatchTime.now()
+                let msecTaken = Double(end.uptimeNanoseconds - start.uptimeNanoseconds) / Double(NSEC_PER_MSEC)
+                os_log("Analyzed replain gain for %d tracks in %.2f msec (%.2f msec per track)", urls.count, msecTaken, msecTaken / Double(urls.count))
+                os_log("Album gain %.2f dB, peak %.6f\nTracks:\n%{public}@", rg.replayGain.gain, rg.replayGain.peak, rg.trackReplayGain.map({ (url, replayGain) in String(format: "    \"%@\" gain %.2f dB, peak %.6f", FileManager.default.displayName(atPath: url.lastPathComponent), replayGain.gain, replayGain.peak) }).joined(separator: "\n"))
                 let alert = NSAlert()
                 alert.messageText = "Replay Gain Analysis Complete"
                 alert.informativeText = "Check log for details."
