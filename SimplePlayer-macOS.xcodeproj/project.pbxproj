@@ -395,7 +395,7 @@
 			repositoryURL = "https://github.com/sbooth/SFBAudioEngine";
 			requirement = {
 				kind = upToNextMinorVersion;
-				minimumVersion = 0.11.0;
+				minimumVersion = 0.12.0;
 			};
 		};
 		32919FCB2BFAEF8000A3E43A /* XCRemoteSwiftPackageReference "CAAudioHardware" */ = {
