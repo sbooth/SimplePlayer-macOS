@@ -144,7 +144,6 @@ class PlayerWindowController: NSWindowController {
         timer.setEventHandler { [weak self] in
             guard let self else { return }
             if let time = self.player.time {
-
                 self.slider.doubleValue = time.progress ?? 0
 
                 if let current = time.current {
