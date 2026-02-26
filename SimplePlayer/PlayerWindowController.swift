@@ -143,15 +143,18 @@ class PlayerWindowController: NSWindowController {
 
         timer.setEventHandler {
             if let time = self.player.time {
-                if let progress = time.progress {
-                    self.slider.doubleValue = progress
-                }
+                self.slider.doubleValue = time.progress ?? 0
 
                 if let current = time.current {
                     self.elapsed.doubleValue = current
                     if let remaining = time.remaining {
                         self.remaining.doubleValue = -1 * remaining
+                    } else {
+                        self.remaining.stringValue = ""
                     }
+                } else {
+                    self.elapsed.stringValue = ""
+                    self.remaining.stringValue = ""
                 }
             }
         }
