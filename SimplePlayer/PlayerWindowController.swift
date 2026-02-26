@@ -141,17 +141,21 @@ class PlayerWindowController: NSWindowController {
         timer = DispatchSource.makeTimerSource(queue: .main)
         timer.schedule(deadline: DispatchTime.now(), repeating: .milliseconds(200), leeway: .milliseconds(100))
 
-        timer.setEventHandler {
+        timer.setEventHandler { [weak self] in
+            guard let self else { return }
             if let time = self.player.time {
-                if let progress = time.progress {
-                    self.slider.doubleValue = progress
-                }
+                self.slider.doubleValue = time.progress ?? 0
 
                 if let current = time.current {
                     self.elapsed.doubleValue = current
                     if let remaining = time.remaining {
                         self.remaining.doubleValue = -1 * remaining
+                    } else {
+                        self.remaining.stringValue = ""
                     }
+                } else {
+                    self.elapsed.stringValue = ""
+                    self.remaining.stringValue = ""
                 }
             }
         }
@@ -544,6 +548,7 @@ extension PlayerWindowController: NSMenuItemValidation {
 // MARK: - NSWindowDelegate
 extension PlayerWindowController: NSWindowDelegate {
     func windowWillClose(_ notification: Notification) {
+        timer.cancel()
         player.stop()
 
         if let uid = try? AudioObject.getPropertyData(objectID: player.outputDeviceID, property: PropertyAddress(kAudioDevicePropertyDeviceUID), type: CFString.self) as String {
