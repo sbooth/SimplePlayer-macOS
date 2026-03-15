@@ -382,9 +382,7 @@ class PlayerWindowController: NSWindowController {
         forwardButton.isEnabled = seekable
 
         elapsed.isHidden = false
-        if player.frameLength != nil {
-            remaining.isHidden = false
-        }
+        remaining.isHidden = player.frameLength == nil
 
         // Update the track display
         updateUI(for: nowPlaying)
